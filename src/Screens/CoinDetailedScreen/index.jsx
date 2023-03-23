@@ -21,15 +21,20 @@ const {
     },  
 } = Coin;
 
-const [coinValue, setCoinValue] = useState(1);
-const [usdValue, setusdValue] = useState(current_price.usd);
+const [coinValue, setCoinValue] = useState("1");
+const [usdValue, setusdValue] = useState(current_price.usd.toString());
 
 const changeCoinValue = (value) => {
-
+    setCoinValue(parseFloat(value));
+    const floatValue = parseFloat(value) || 0
+    setusdValue((floatValue * current_price.usd).toString())
 };
 
 const changeUsdValue = (value) => {
-
+    setusdValue(parseFloat(value));
+    const floatValue = parseFloat(value) || 0
+    setCoinValue((floatValue / current_price.usd).toString())
+    setusdValue(value / current_price.usd)
 };
 
 
@@ -90,12 +95,12 @@ return(
          <View style={{flexDirection: 'row'}}>
             <View style={{flexDirection:'row', flex:1}}>
                 <Text style={{color:'white', alignSelf:'center'}}>{symbol.toUpperCase()}</Text>
-                    <TextInput style={styles.input} value={coinValue.toString()} keyboardType='numeric' onChangeText={changeCoinValue}/>
+                    <TextInput style={styles.input} value={coinValue} keyboardType='numeric' onChangeText={changeCoinValue}/>
                         <View>
 
                         </View>
                         <Text style={{color:'white', alignSelf:'center'}}>USD</Text>
-                    <TextInput style={styles.input} value={usdValue.toString()} keyboardType='numeric' onChangeText={changeUsdValue} />
+                    <TextInput style={styles.input} value={usdValue} keyboardType='numeric' onChangeText={changeUsdValue} />
             </View>
 
          </View>
