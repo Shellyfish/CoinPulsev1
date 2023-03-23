@@ -5,6 +5,7 @@ import CoinDetailedHeader from "./components/CoinDetailedHeader";
 import styles from "./styles";
 import { AntDesign } from '@expo/vector-icons';
 import {ChartDot, ChartPath, ChartPathProvider, ChartYLabel} from '@rainbow-me/animated-charts';
+import { useNavigation } from "@react-navigation/native";
 
 
 
@@ -25,6 +26,8 @@ const {
 const [coinValue, setCoinValue] = useState("1");
 const [usdValue, setusdValue] = useState(current_price.usd.toString());
 
+const navigation = useNavigation();
+
 const changeCoinValue = (value) => {
     setCoinValue(parseFloat(value));
     const floatValue = parseFloat(value.replace(',','.')) || 0  
@@ -33,7 +36,7 @@ const changeCoinValue = (value) => {
 
 const changeUsdValue = (value) => {
     setusdValue(parseFloat(value));
-    const floatValue = parseFloat(value) || 0
+    const floatValue = parseFloat(value.replace(',','.')) || 0
     setCoinValue((floatValue / current_price.usd).toString())
     setusdValue(value / current_price.usd)
 };
@@ -80,7 +83,10 @@ return(
             <AntDesign
             name={updownArrow}
             size={15} color={'white'} 
-            style={{alignSelf: 'center', marginRight: 3}} />
+            style={{alignSelf: 'center', 
+            marginRight: 3}}
+            />
+
                 <Text style={styles.priceChange}>
                 {price_change_percentage_24h.toFixed(2)}%</Text>
             </View>
