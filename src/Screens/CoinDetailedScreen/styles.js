@@ -22,5 +22,16 @@ const styles = StyleSheet.create({
         color:'white', 
         fontSize:18, 
         fontWeight:'700'},
+    input: {
+        flex: 1,
+        color:'white',
+        width:130,
+        height: 50,
+        margin:12,
+        borderBottomWidth:1,
+        borderBottomColor: 'white',
+        padding:10,
+        fontSize:16
+    }
 });
 export default styles;
