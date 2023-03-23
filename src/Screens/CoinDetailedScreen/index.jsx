@@ -21,12 +21,13 @@ const {
     },  
 } = Coin;
 
+
 const [coinValue, setCoinValue] = useState("1");
 const [usdValue, setusdValue] = useState(current_price.usd.toString());
 
 const changeCoinValue = (value) => {
     setCoinValue(parseFloat(value));
-    const floatValue = parseFloat(value) || 0
+    const floatValue = parseFloat(value.replace(',','.')) || 0  
     setusdValue((floatValue * current_price.usd).toString())
 };
 
@@ -45,6 +46,7 @@ const updownArrow = price_change_percentage_24h < 0 ? "arrowdown" : "arrowup";
 const screenWidth = Dimensions.get('window').width;
 
 const chartColor = current_price.usd > prices[0][1] ? "#16c784" : "#ea3943";
+
 
 
 const formatCurrency = (value) => {
