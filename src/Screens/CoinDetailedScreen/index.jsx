@@ -6,7 +6,7 @@ import styles from "./styles";
 import { AntDesign } from '@expo/vector-icons';
 import {ChartDot, ChartPath, ChartPathProvider, ChartYLabel} from '@rainbow-me/animated-charts';
 import { useNavigation } from "@react-navigation/native";
-
+import { useRoute } from "@react-navigation/native";
 
 
 const CoinDetailedScreen = () => {
@@ -25,6 +25,9 @@ const {
 
 const [coinValue, setCoinValue] = useState("1");
 const [usdValue, setusdValue] = useState(current_price.usd.toString());
+
+const route = useRoute();
+const {params: {coinId}} = route;
 
 const navigation = useNavigation();
 

@@ -13,6 +13,7 @@ const CoinItem = ({marketCoin}) => {
         symbol, 
         market_cap,
         image,
+        id,
     } = marketCoin;
 
     const navigation = useNavigation();
@@ -34,7 +35,7 @@ const CoinItem = ({marketCoin}) => {
         return market_cap
     };
     return(
-<Pressable style={styles.CoinTitle} onPress={() => navigation.navigate('CDS')}>
+<Pressable style={styles.CoinTitle} onPress={() => navigation.navigate('CDS', {coinId: id})}>
         <Image source={{uri:image}}
         style={{
             height: 30,

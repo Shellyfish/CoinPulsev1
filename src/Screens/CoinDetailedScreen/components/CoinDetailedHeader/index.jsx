@@ -9,7 +9,7 @@ const CoinDetailedHeader = (props) => {
     const navigation = useNavigation();
     return(
         <View style={styles.headContainer}>
-        <AntDesign name="leftcircle" size={24} color="white" onPress={() => navigation.goBack} />
+        <AntDesign name="leftcircle" size={24} color="white" onPress={() => navigation.navigate('Home')} />
         <View style={styles.tickerContainer}>
             <Image source={{uri: image}} style={{width:24, height:24}}/>
             <Text style={styles.tickerTitle}>{symbol.toUpperCase()}</Text>
